@@ -30,5 +30,21 @@
 
 ####4.强制类型转换  
 * 类型转换发生在静态类型语言的编译阶段，而强制类型转换则发生在动态类型语言的运行时（runtime）；
-*  ToString负责处理非字符串到字符串的强制类型转换；
+* ToString负责处理非字符串到字符串的强制类型转换；  
+JSON.stringify(..) 在对象中遇到 undefined 、 function 和 symbol 时会自动将其忽略，在数组中则会返回 null （以保证单元位置不变）； 如果对象中定义了 toJSON() 方法，JSON 字符串化时会首先调用该方法，然后用它的返回值来进行序列化。 toJSON() 应该“返回一个能够被字符串化的安全的 JSON 值” ，而不是“返回一个 JSON 字符串” 。可以向 JSON.stringify(..) 传递一个可选参数 replacer，它可以是数组或者函数，用来指定对象序列化过程中哪些属性应该被处理，哪些应该被排除，和 toJSON() 很像;
+* 假值：undefined null false +0  -0 NaN ""；
+* 日期转时间戳：Date.now()；
+* 如果 indexOf(..) 返回 -1 ， ~ 将其转换为假值 0 ，其他情况一律转换为真值；
+* parseInt(..) 针对的是字符串值，返回整数；
+* 如果 + 的其中一个操作数是字符串（或者通过以上步骤可以得到字符串），则执行字符串拼接；否则执行数字加法。
+* 对于 || 来说，如果条件判断结果为 true 就返回第一个操作数（ a 和 c ）的值，如果为false 就返回第二个操作数（ b ）的值；  
+&& 则相反，如果条件判断结果为 true 就返回第二个操作数（ b ）的值，如果为 false 就返回第一个操作数（ a 和 c ）的值；
+* == 允许在相等比较中进行强制类型转换，而 === 不允许；
+*  如果 Type(x) 是数字， Type(y) 是字符串，则返回 x == ToNumber(y)的结果；  
+如果 Type(x) 是字符串， Type(y) 是数字，则返回 ToNumber(x) == y的结果；
+* if(!!a){}和if(Boolean(a)){}避免了布尔值的宽松相等；
+* 如果 x 为 null(undefined) ， y 为 undefined(null) ，则结果为 true；
+* 如果 Type(x) 是字符串或数字， Type(y) 是对象，则返回 x == ToPrimitive(y)的结果；  
+如果 Type(x) 是对象， Type(y) 是字符串或数字，则返回 ToPromitive(x) == y的结果。
+* "0" == false; false == 0; false == ""; false == []; "" == 0; "" == []; 0 == []
 ####5.语法
