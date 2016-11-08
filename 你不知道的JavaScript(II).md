@@ -46,5 +46,6 @@ JSON.stringify(..) 在对象中遇到 undefined 、 function 和 symbol 时会�
 * 如果 x 为 null(undefined) ， y 为 undefined(null) ，则结果为 true；
 * 如果 Type(x) 是字符串或数字， Type(y) 是对象，则返回 x == ToPrimitive(y)的结果；  
 如果 Type(x) 是对象， Type(y) 是字符串或数字，则返回 ToPromitive(x) == y的结果。
-* "0" == false; false == 0; false == ""; false == []; "" == 0; "" == []; 0 == []  
+* "0" == false; false == 0; false == ""; false == []; "" == 0; "" == []; 0 == []
+
 ####5.语法
